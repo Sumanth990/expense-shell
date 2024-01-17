@@ -24,4 +24,4 @@ systemctl restart backend
 
 dnf install mysql -y
 
-mysql -h 172.31.40.65 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql-dev.aquireawsdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
