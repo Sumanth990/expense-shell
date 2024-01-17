@@ -12,7 +12,7 @@ cd /app
 unzip /tmp/backend.zip
 
 npm install
-
+cp backend.service /etc/systemd/system/backend.service
 systemctl daemon-reload
 
 systemctl enable backend
