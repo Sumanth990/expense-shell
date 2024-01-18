@@ -39,3 +39,4 @@ dnf install mysql -y
 
 echo -e "\e[36m Load schema\e[0m"
 mysql -h mysql-dev.aquireawsdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
+
