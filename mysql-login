@@ -1,1 +1,1 @@
-mysql -h mysql-dev.aquireawsdevops.online -uroot -pExpenseApp@1
+mysql -h mysql-dev.aquireawsdevops.online -uroot -p$1
