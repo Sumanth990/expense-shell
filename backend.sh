@@ -17,6 +17,7 @@ dnf install nodejs -y &>>$log_file
 Head "adding application user"
 useradd expense &>>$log_file
 
+
 Head "configure backend service"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
 
