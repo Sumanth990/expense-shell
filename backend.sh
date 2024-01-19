@@ -1,4 +1,5 @@
 log_file=/tmp/expense.log
+MySQL_PASSWORD=$1
 
 echo -e "\e[36m disable default version of nodeJS\e[0m"
 dnf module disable nodejs -y &>>$log_file
@@ -40,7 +41,8 @@ echo -e "\e[36m Install MySQL client\e[0m"
 dnf install mysql -y &>>$log_file
 
 echo -e "\e[36m Load schema\e[0m"
-mysql -h mysql-dev.aquireawsdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql -h mysql-dev.aquireawsdevops.online -uroot -p${MySQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
 
+#We can use $1 instead of ${MySQL_PASSWORD}
 
-
+#password: ExpenseApp@1
