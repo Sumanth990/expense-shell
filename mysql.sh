@@ -1,4 +1,4 @@
-${MySQL_PASSWORD}=$1
+#${MySQL_PASSWORD}=$1
 
 dnf module disable mysql -y
 cp mysql.repo /etc/yum.repos.d/mysql.repo
