@@ -1,47 +1,51 @@
 log_file=/tmp/expense.log
 MySQL_PASSWORD=$1
 
-echo -e "\e[36m disable default version of nodeJS\e[0m"
+head () {
+  echo -e "\e[$1\e[0m"
+}
+
+Head "disable default version of nodeJS"
 dnf module disable nodejs -y &>>$log_file
 
-echo -e "\e[36m enable nodeJS18 version\e[0m"
+Head "enable nodeJS18 version"
 dnf module enable nodejs:18 -y &>>$log_file
 
-echo -e "\e[36m install nodeJS\e[0m"
+Head "install nodeJS"
 dnf install nodejs -y &>>$log_file
 
-echo -e "\e[36m adding application user\e[0m"
+Head "adding application user"
 useradd expense &>>$log_file
 
-echo -e "\e[36m configure backend service\e[0m"
+Head "configure backend service"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
 
-echo -e "\e[36m remove existing app content\e[0m"
+Head "remove existing app content"
 rm -rf /app &>>$log_file
 
-echo -e "\e[36m create application directory\e[0m"
+Head "create application directory"
 mkdir /app &>>$log_file
 
-echo -e "\e[36m Download application content\e[0m"
+Head "Download application content"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file
 cd /app
 
-echo -e "\e[36m Extracting application content\e[0m"
+Head "Extracting application content"
 unzip /tmp/backend.zip &>>$log_file
 
-echo -e "\e[36m Installing application dependencies\e[0m"
+Head "Installing application dependencies"
 npm install &>>$log_file
 
-echo -e "\e[36m reloading systemd and start backend service\e[0m"
+Head "reloading systemd and start backend service"
 systemctl daemon-reload &>>$log_file
 systemctl enable backend &>>$log_file
 systemctl restart backend &>>$log_file
 
-echo -e "\e[36m Install MySQL client\e[0m"
+Head "Install MySQL client"
 dnf install mysql -y &>>$log_file
 
 
-echo -e "\e[36m Load schema\e[0m"
+Head "Load schema"
 mysql -h mysql-dev.aquireawsdevops.online -uroot -p${MySQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
 
 #We can use $1 instead of ${MySQL_PASSWORD}
