@@ -2,7 +2,7 @@ log_file=/tmp/expense.log
 MySQL_PASSWORD=$1
 
 head () {
-  echo -e "\e[$1\e[0m"
+  echo -e "\e[35m$1\e[0m"
 }
 
 Head "disable default version of nodeJS"
