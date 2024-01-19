@@ -40,6 +40,7 @@ systemctl restart backend &>>$log_file
 echo -e "\e[36m Install MySQL client\e[0m"
 dnf install mysql -y &>>$log_file
 
+
 echo -e "\e[36m Load schema\e[0m"
 mysql -h mysql-dev.aquireawsdevops.online -uroot -p${MySQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
 
