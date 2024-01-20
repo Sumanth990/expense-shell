@@ -1,10 +1,32 @@
-dnf install nginx -y
-cp expense.conf /etc/nginx/default.d/expense.conf
-rm -rf /usr/share/nginx/html/*
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip
+MySQL_PASSWORD=$1
+log_file=/tmp/expense.log
+
+Head () {
+  echo -e "\e[35m$1\e[0m"
+}
+
+Head "Install Nginx"
+dnf install nginx -y &>>$log_file
+echo $?
+
+Head "Copy expense configuration"
+cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
+echo $?
+
+Head "Remove Default content"
+rm -rf /usr/share/nginx/html/* &>>$log_file
+echo $?
+
+Head "Download frontend content"
+curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip &>>$log_file
 cd /usr/share/nginx/html
-unzip /tmp/frontend.zip
+echo $?
 
-systemctl enable nginx
-systemctl restart nginx
+Head "Extract frontend content"
+unzip /tmp/frontend.zip &>>$log_file
+echo $?
 
+Head "Start Nginx services"
+systemctl enable nginx &>>$log_file
+systemctl restart nginx &>>$log_file
+echo $?
