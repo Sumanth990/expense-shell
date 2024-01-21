@@ -11,7 +11,7 @@ Head "Copy expense configuration"
 cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
 echo $?
 
-app_prereq = "/usr/share/nginx/html"
+app_prereq "/usr/share/nginx/html"
 
 Head "Start Nginx services"
 systemctl enable nginx &>>$log_file

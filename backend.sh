@@ -20,7 +20,7 @@ Head "adding application user"
 useradd expense &>>$log_file
 echo $?
 
-app_prereq= "/app"
+app_prereq "/app"
 
 Head "configure backend service"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
