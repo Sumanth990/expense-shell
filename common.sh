@@ -20,6 +20,7 @@ app_prereq () {
   curl -o /tmp/${component}.zip https://expense-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
   echo $?
 
+
   cd $1
 
   Head "Extracting application content"
