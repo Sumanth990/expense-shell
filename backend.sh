@@ -1,11 +1,8 @@
 log_file=/tmp/expense.log
 MySQL_PASSWORD=$1
 
-component = backend
-Head () {
-  echo -e "\e[35m$1\e[0m"
-}
-
+component=backend
+source common.sh
 
 Head "disable default version of nodeJS"
 dnf module disable nodejs -y &>>$log_file
