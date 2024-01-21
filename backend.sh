@@ -10,7 +10,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 Head "enable nodeJS18 version"
@@ -19,7 +19,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 Head "install nodeJS"
@@ -28,7 +28,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 Head "adding application user"
@@ -37,7 +37,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 
@@ -47,7 +47,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 #we are keeping "/app" here because conf file will fail due to change of directory path.
@@ -60,7 +60,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 Head "reloading systemd and start backend service"
@@ -71,7 +71,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 Head "Install MySQL client"
@@ -80,7 +80,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 Head "Load schema"
@@ -89,7 +89,7 @@ if [ $? -eq 0 ]; then
 echo Success
 else
 echo Failure
-exit 1
+exit
 fi
 
 #We can use $1 instead of ${MySQL_PASSWORD}

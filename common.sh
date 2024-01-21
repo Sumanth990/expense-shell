@@ -38,10 +38,5 @@ fi
 
   Head "Extracting application content"
   unzip /tmp/${component}.zip &>>$log_file
-  if [ $? -eq 0 ]; then
-echo Success
-else
-echo Failure
-exit 1
-fi
-}
+
+
