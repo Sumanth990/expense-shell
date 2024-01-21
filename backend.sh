@@ -17,7 +17,10 @@ dnf install nodejs -y &>>$log_file
 Stat $?
 
 Head "adding application user"
-useradd expense &>>$log_file
+id expense &>>$log_file
+if [ "$?" -ne 0 ]; then
+ adduser expense &>>$log_file
+fi
 Stat $?
 
 
