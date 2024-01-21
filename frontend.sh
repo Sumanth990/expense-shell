@@ -1,5 +1,9 @@
 MySQL_PASSWORD=$1
 
+if [ -z “$MySQL_PASSWORD” ]; then
+echo Input MySQL_PASSWORD is missing
+exit 1
+fi
 component=frontend
 source common.sh
 

@@ -1,6 +1,11 @@
 log_file=/tmp/expense.log
 MySQL_PASSWORD=$1
 
+if [ -z “$MySQL_PASSWORD” ]; then
+echo Input MySQL_PASSWORD is missing
+exit 1
+fi
+
 component=backend
 source common.sh
 
