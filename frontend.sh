@@ -1,5 +1,6 @@
 MySQL_PASSWORD=$1
 
+component=frontend
 source common.sh
 
 Head "Install Nginx"
@@ -10,18 +11,7 @@ Head "Copy expense configuration"
 cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
 echo $?
 
-Head "Remove Default content"
-rm -rf /usr/share/nginx/html/* &>>$log_file
-echo $?
-
-Head "Download frontend content"
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip &>>$log_file
-cd /usr/share/nginx/html
-echo $?
-
-Head "Extract frontend content"
-unzip /tmp/frontend.zip &>>$log_file
-echo $?
+app_prereq = "/usr/share/nginx/html"
 
 Head "Start Nginx services"
 systemctl enable nginx &>>$log_file

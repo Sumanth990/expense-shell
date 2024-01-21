@@ -1,6 +1,7 @@
 log_file=/tmp/expense.log
 MySQL_PASSWORD=$1
 
+component = backend
 Head () {
   echo -e "\e[35m$1\e[0m"
 }
@@ -22,25 +23,10 @@ Head "adding application user"
 useradd expense &>>$log_file
 echo $?
 
+app_prereq= "/app"
+
 Head "configure backend service"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
-echo $?
-
-Head "remove existing app content"
-rm -rf /app &>>$log_file
-echo $?
-
-Head "create application directory"
-mkdir /app &>>$log_file
-echo $?
-
-Head "Download application content"
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file
-cd /app
-echo $?
-
-Head "Extracting application content"
-unzip /tmp/backend.zip &>>$log_file
 echo $?
 
 Head "Installing application dependencies"
