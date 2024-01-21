@@ -6,7 +6,6 @@ Head () {
 
 #create a function
 app_prereq () {
-  dir=$1
 
   Head "remove existing app content"
   rm -rf $1 &>>$log_file
@@ -19,7 +18,6 @@ app_prereq () {
   Head "Download application content"
   curl -o /tmp/${component}.zip https://expense-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
   echo $?
-
 
   cd $1
 

@@ -26,6 +26,7 @@ cp backend.service /etc/systemd/system/backend.service &>>$log_file
 echo $?
 
 #we are keeping "/app" here because conf file will fail due to change of directory path.
+
 app_prereq "/app"
 
 Head "Installing application dependencies"
